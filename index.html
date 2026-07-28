@@ -220,6 +220,42 @@
 
   /* ---------- ANNOUNCEMENTS ---------- */
   .announcements{background:var(--paper);}
+
+  /* ---------- HOME ANNOUNCEMENT CAROUSEL ---------- */
+  .announce-carousel{position:relative;overflow:hidden;background:#0a1730;padding:0;}
+  .announce-carousel .track{display:flex;transition:transform 0.6s cubic-bezier(.65,0,.35,1);}
+  .announce-slide{
+    min-width:100%;height:clamp(200px,20vw,300px);position:relative;
+    display:flex;align-items:center;background-size:cover;background-position:center;
+  }
+  .announce-slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0) 60%);
+  }
+  .slide-copy{position:relative;z-index:2;padding:24px 28px;max-width:640px;}
+  .slide-copy .eyebrow{color:var(--gold-light);}
+  .slide-copy h2{font-size:clamp(1.25rem,2.6vw,2rem);margin-top:8px;color:#fff;}
+  .slide-copy p{margin-top:10px;color:rgba(255,255,255,0.85);font-size:0.95rem;max-width:52ch;}
+  .carousel-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.85);color:var(--ink);border:none;cursor:pointer;z-index:5;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.2);
+    transition:background 0.2s ease;
+  }
+  .carousel-arrow:hover{background:#fff;}
+  .carousel-arrow.prev{left:16px;}
+  .carousel-arrow.next{right:16px;}
+  .carousel-dots{position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5;}
+  .carousel-dots button{
+    width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);border:none;
+    padding:0;cursor:pointer;transition:all 0.25s ease;
+  }
+  .carousel-dots button.active{background:#fff;width:22px;border-radius:5px;}
+  @media (max-width:600px){
+    .carousel-arrow{width:36px;height:36px;}
+    .carousel-arrow svg{width:15px;height:15px;}
+    .slide-copy{padding:20px 18px 30px;}
+  }
   .notice-board{
     border:1px solid rgba(21,42,45,0.1);border-radius:var(--radius);
     overflow:hidden;background:#fff;
@@ -388,6 +424,42 @@
 
 
 
+
+  <!-- HOME ANNOUNCEMENT CAROUSEL -->
+  <section id="home-announcements" class="announce-carousel" aria-label="Announcements">
+    <div class="track" id="annTrack">
+      <div class="announce-slide" style="background-image:linear-gradient(135deg,#071a36,#164a78);">
+        <div class="slide-copy wrap">
+          <span class="eyebrow">Announcement</span>
+          <h2>Enrollment for A.Y. 2026&ndash;2027 is now open</h2>
+          <p>Visit the Student Portal or the Registrar's office to complete your enrollment requirements.</p>
+        </div>
+      </div>
+      <div class="announce-slide" style="background-image:linear-gradient(135deg,#081f42,#1c5c8f);">
+        <div class="slide-copy wrap">
+          <span class="eyebrow">Upcoming event</span>
+          <h2>SED Guild Week &mdash; September 7 to 12</h2>
+          <p>Join college-wide organizational activities and this year's student council elections.</p>
+        </div>
+      </div>
+      <div class="announce-slide" style="background-image:linear-gradient(135deg,#0a2350,#2168a3);">
+        <div class="slide-copy wrap">
+          <span class="eyebrow">Scholarships</span>
+          <h2>Academic &amp; needs-based scholarship applications are open</h2>
+          <p>Check eligibility requirements and deadlines with the Scholarships Office.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-arrow prev" aria-label="Previous announcement" onclick="annMove(-1)">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4l-8 8 8 8"/></svg>
+    </button>
+    <button class="carousel-arrow next" aria-label="Next announcement" onclick="annMove(1)">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4l8 8-8 8"/></svg>
+    </button>
+
+    <div class="carousel-dots" id="annDots"></div>
+  </section>
 
   <!-- ABOUT / PROGRAMS -->
   <section id="about" class="programs">
@@ -569,5 +641,42 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var track = document.getElementById('annTrack');
+    var dotsWrap = document.getElementById('annDots');
+    if(!track || !dotsWrap) return;
+    var slides = track.children;
+    var count = slides.length;
+    var index = 0;
+    var timer;
+
+    for(var i=0;i<count;i++){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label','Go to announcement '+(i+1));
+      if(i===0) b.className = 'active';
+      (function(i){ b.onclick = function(){ goTo(i); resetTimer(); }; })(i);
+      dotsWrap.appendChild(b);
+    }
+    var dots = dotsWrap.children;
+
+    function goTo(i){
+      index = (i+count)%count;
+      track.style.transform = 'translateX(-'+(index*100)+'%)';
+      for(var j=0;j<dots.length;j++){ dots[j].className = (j===index) ? 'active' : ''; }
+    }
+    window.annMove = function(dir){ goTo(index+dir); resetTimer(); };
+
+    function resetTimer(){
+      clearInterval(timer);
+      timer = setInterval(function(){ goTo(index+1); }, 6000);
+    }
+    resetTimer();
+
+    var carousel = document.getElementById('home-announcements');
+    carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    carousel.addEventListener('mouseleave', resetTimer);
+  })();
+</script>
 </body>
 </html>
