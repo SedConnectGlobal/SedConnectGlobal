@@ -28,7 +28,9 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--cream);
+    background-color:var(--cream);
+    background-image:radial-gradient(circle at 1px 1px, rgba(10,95,110,0.07) 1px, transparent 0);
+    background-size:24px 24px;
     color:var(--ink);
     font-family:'Inter',sans-serif;
     line-height:1.55;
@@ -38,8 +40,9 @@
     font-family:'Fraunces',serif;
     color:var(--ink);
     margin:0;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.015em;
   }
+  h2 em, h3 em{font-style:italic;color:var(--teal-deep);font-weight:500;}
   .eyebrow{
     font-family:'IBM Plex Mono',monospace;
     text-transform:uppercase;
@@ -47,7 +50,9 @@
     font-size:0.72rem;
     color:var(--teal-deep);
     font-weight:500;
+    display:inline-flex;align-items:center;gap:10px;
   }
+  .eyebrow::before{content:"";display:inline-block;width:20px;height:2px;background:var(--gold);}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
@@ -58,6 +63,8 @@
     background:rgba(250,246,236,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid rgba(10,95,110,0.15);
+    border-top:3px solid var(--teal-deep);
+    border-image:linear-gradient(90deg, var(--teal-deep), var(--gold-light), var(--teal-deep)) 1;
   }
   .nav-inner{
     max-width:var(--maxw);margin:0 auto;padding:12px 28px;
@@ -89,28 +96,58 @@
   /* ---------- SECTION HEADS ---------- */
   section{padding:84px 0;}
   .section-head{max-width:640px;margin-bottom:44px;}
-  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:10px;font-weight:600;}
-  .section-head p{color:var(--ink-soft);margin-top:12px;}
+  .section-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin-top:14px;font-weight:600;line-height:1.15;}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1rem;}
 
   .sub-block{margin-top:32px;}
-  .sub-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
-  .sub-head h3{font-size:1.25rem;font-weight:600;}
+  .sub-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(21,42,45,0.1);}
+  .sub-head h3{font-size:1.3rem;font-weight:600;display:flex;align-items:center;gap:12px;}
+  .sub-head h3::before{content:"";display:inline-block;width:22px;height:2px;background:var(--gold);flex-shrink:0;}
   .count{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.04em;color:var(--ink-soft);}
-  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  .card{background:var(--paper);border:1px solid rgba(21,42,45,0.08);border-radius:var(--radius);padding:28px 24px;position:relative;overflow:hidden;}
-  .card .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--teal-pale);color:var(--teal-deep);margin-bottom:18px;}
-  .card h3{font-size:1.1rem;font-weight:600;margin-bottom:8px;}
-  .card p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 14px;}
-  .card .go{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--teal-deep);letter-spacing:0.04em;display:inline-flex;align-items:center;gap:6px;}
-  .program-list{display:grid;gap:10px;}
-  .program-row{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 16px;border:1px solid rgba(21,42,45,0.08);border-radius:12px;background:#fff;}
+  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:prog;}
+  .card{
+    background:var(--paper);border:1px solid rgba(21,42,45,0.08);border-radius:var(--radius);
+    padding:28px 24px;position:relative;overflow:hidden;counter-increment:prog;
+  }
+  .card::before{
+    content:counter(prog,decimal-leading-zero);position:absolute;top:8px;right:16px;
+    font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;color:rgba(10,95,110,0.07);
+    line-height:1;pointer-events:none;
+  }
+  a.card{transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;}
+  a.card:hover{border-color:rgba(10,95,110,0.35);transform:translateY(-3px);box-shadow:0 12px 28px rgba(10,95,110,0.12);}
+  .card .icon{
+    width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    border:1.5px solid var(--teal-deep);background:transparent;color:var(--teal-deep);margin-bottom:18px;
+    transition:background 0.2s ease, color 0.2s ease;position:relative;z-index:1;
+  }
+  a.card:hover .icon{background:var(--teal-deep);color:#fff;}
+  .card h3{font-size:1.12rem;font-weight:600;margin-bottom:8px;position:relative;z-index:1;}
+  .card p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 14px;position:relative;z-index:1;}
+  .card .go{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--teal-deep);letter-spacing:0.04em;
+    display:inline-flex;align-items:center;gap:6px;position:relative;z-index:1;
+  }
+  .program-list{display:grid;gap:10px;counter-reset:grad;}
+  .program-row{
+    display:flex;justify-content:space-between;gap:16px;align-items:center;
+    padding:14px 16px 14px 54px;border:1px solid rgba(21,42,45,0.08);border-radius:12px;
+    background:#fff;position:relative;counter-increment:grad;transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .program-row:hover{border-color:rgba(10,95,110,0.3);background:rgba(227,243,244,0.3);}
+  .program-row::before{
+    content:counter(grad,decimal-leading-zero);position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    width:28px;height:28px;border-radius:50%;background:var(--teal-pale);color:var(--teal-deep);
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;display:flex;align-items:center;justify-content:center;
+  }
   .program-row h4{font-size:1rem;font-weight:600;}
   .program-row span{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--teal-deep);}
   .notice-board{border:1px solid rgba(21,42,45,0.1);border-radius:var(--radius);overflow:hidden;background:#fff;}
-  .notice{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:22px 26px;border-bottom:1px solid rgba(21,42,45,0.08);}
+  .notice{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:22px 26px;border-bottom:1px solid rgba(21,42,45,0.08);transition:background 0.2s ease;}
+  .notice:hover{background:rgba(227,243,244,0.28);}
   .notice:last-child{border-bottom:none;}
   .notice .date{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:2px;}
-  .notice .date .num{font-size:1.3rem;color:var(--ink);font-weight:600;font-family:'Fraunces',serif;}
+  .notice .date .num{font-size:1.4rem;color:var(--ink);font-weight:600;font-family:'Fraunces',serif;font-style:italic;}
   .notice h4{font-size:1rem;font-weight:600;}
   .notice p{margin:4px 0 0;color:var(--ink-soft);font-size:0.87rem;}
   .tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;padding:5px 10px;border-radius:999px;white-space:nowrap;}
@@ -162,7 +199,7 @@
     <div class="wrap">
       <div class="section-head" style="margin-bottom:36px;">
         <span class="eyebrow">College catalog</span>
-        <h2>School of Education &ndash; Program Offerings</h2>
+        <h2>School of Education <em>Program Offerings</em></h2>
         <p>USJ-R's School of Education is a CHED Center of Excellence in Teacher Education, forming elementary, secondary, and special-needs educators since 1947. Below is the current lineup of undergraduate, graduate, and diploma/certificate programs.</p>
       </div>
 
@@ -197,12 +234,12 @@
             <p>Focuses on inclusive elementary instruction for learners with special needs.</p>
             <span class="go">BSNEd-EST</span>
           </div>
-          <div class="card">
+          <a class="card" href="bsed-english.html" style="display:block;">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></div>
             <h3>Bachelor of Secondary Education &mdash; English</h3>
             <p>Prepares secondary-level teachers specializing in English language and literature.</p>
-            <span class="go">BSEd-English</span>
-          </div>
+            <span class="go">View curriculum &nbsp;<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M7 3l3 3-3 3"/></svg></span>
+          </a>
           <div class="card">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></div>
             <h3>Bachelor of Secondary Education &mdash; Filipino</h3>
