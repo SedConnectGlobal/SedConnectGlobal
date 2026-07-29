@@ -303,13 +303,20 @@
     position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
     width:5px;height:5px;border-radius:50%;
   }
+  .cal-days .day .dots{
+    position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+    display:flex;gap:2px;
+  }
+  .cal-days .day .dots .dot{position:static;transform:none;}
   .cal-days .day.has-event{font-weight:600;cursor:pointer;}
   .cal-days .day.has-event.teal{background:var(--teal-pale);}
   .cal-days .day.has-event.green{background:rgba(47,122,77,0.12);}
   .cal-days .day.has-event.gold{background:rgba(189,143,42,0.14);}
+  .cal-days .day.has-event.torch{background:rgba(168,57,44,0.12);}
   .cal-days .day .dot.teal{background:var(--teal-bright);}
   .cal-days .day .dot.green{background:var(--green);}
   .cal-days .day .dot.gold{background:var(--gold);}
+  .cal-days .day .dot.torch{background:var(--torch);}
 
   .day-tip{
     position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
@@ -322,6 +329,7 @@
     font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;
     color:rgba(244,239,226,0.55);text-transform:uppercase;margin-bottom:4px;
   }
+  .day-tip .tip-event + .tip-event{margin-top:9px;padding-top:9px;border-top:1px solid rgba(244,239,226,0.15);}
   .day-tip .tip-label{font-size:0.8rem;font-weight:600;line-height:1.3;color:#fff;}
   .day-tip .tip-cat{
     display:inline-flex;align-items:center;gap:5px;margin-top:7px;
@@ -487,6 +495,7 @@
         <span><span class="dot teal"></span>Academic activities</span>
         <span><span class="dot green"></span>Examination schedules</span>
         <span><span class="dot gold"></span>Holidays &amp; non-working days</span>
+        <span><span class="dot torch"></span>SED programs &amp; events</span>
       </div>
 
       <!-- FIRST SEMESTER -->
@@ -494,7 +503,7 @@
         <summary>
           <div class="sub-head-left">
             <h3>First Semester, A.Y. 2026&ndash;2027</h3>
-            <span class="count">Aug 03, 2026 &ndash; Jan 23, 2027 &middot; 21 dates</span>
+            <span class="count">Aug 03, 2026 &ndash; Jan 23, 2027 &middot; 40 dates</span>
           </div>
           <span class="toggle-chip">
             <span class="txt-close">Hide dates</span>
@@ -509,9 +518,34 @@
             <span class="tag teal">Academic</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">04</span>AUG</div>
+            <h4>SED General Assembly</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">05</span>AUG</div>
+            <h4>Student Advising Program (SAP) Meeting</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">06</span>AUG</div>
             <h4>Charter Day of Cebu Province</h4>
             <span class="tag gold">Holiday</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">07</span>AUG</div>
+            <h4>First Friday Mass (monthly, Aug&ndash;May)</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">08</span>AUG</div>
+            <h4>I Read You, I Feed You Program (weekly Saturdays, Aug&ndash;May)</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">14</span>AUG</div>
+            <h4>SED Faculty Meeting &amp; Buwan ng Wika</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">19</span>AUG</div>
@@ -529,6 +563,11 @@
             <span class="tag gold">Holiday</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">28</span>AUG</div>
+            <h4>Leadership Training 1.0</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">31</span>AUG</div>
             <h4>National Heroes&rsquo; Day</h4>
             <span class="tag gold">Holiday</span>
@@ -544,9 +583,29 @@
             <span class="tag green">Exam</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">25</span>SEP</div>
+            <h4>SED Faculty Meeting &amp; SED Acquaintance Party</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">02</span>OCT</div>
             <h4>Institutional Teachers&rsquo; Day</h4>
             <span class="tag teal">Academic</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">09</span>OCT</div>
+            <h4>Opening of Marian&rsquo;s Tribute</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">16</span>OCT</div>
+            <h4>Closing of Marian&rsquo;s Tribute</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">23</span>OCT</div>
+            <h4>SED Faculty Meeting</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">27&ndash;30</span>OCT</div>
@@ -569,14 +628,39 @@
             <span class="tag gold">Holiday</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">20</span>NOV</div>
+            <h4>SED Faculty Meeting</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">23</span>NOV</div>
+            <h4>Eucharistic Celebration &amp; Dean&rsquo;s List Awarding</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">23&ndash;27</span>NOV</div>
+            <h4>SED Week &amp; PATHFIT Week</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">26&ndash;27</span>NOV</div>
             <h4>Finals &mdash; Graduating</h4>
             <span class="tag green">Exam</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">27</span>NOV</div>
+            <h4>Education Summit 2.0</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">30</span>NOV</div>
             <h4>Andres Bonifacio Day</h4>
             <span class="tag gold">Holiday</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">04</span>DEC</div>
+            <h4>SED Faculty Meeting &amp; Josenian Educators Christmas Party</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">08</span>DEC</div>
@@ -594,9 +678,29 @@
             <span class="tag teal">Academic</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">17</span>DEC</div>
+            <h4>SEMSLC Christmas Party</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">18</span>DEC</div>
+            <h4>SED Christmas Party</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">19</span>DEC</div>
             <h4>Recognition of Service Awardees &amp; Christmas Party</h4>
             <span class="tag teal">Academic</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">21</span>DEC</div>
+            <h4>Kids Life Foundation Donation Drive Christmas Party</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">08</span>JAN</div>
+            <h4>Leadership Training 2.0</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">22</span>JAN</div>
@@ -616,7 +720,7 @@
         <summary>
           <div class="sub-head-left">
             <h3>Second Semester, A.Y. 2026&ndash;2027</h3>
-            <span class="count">Jan 11 &ndash; Jun 05, 2027 &middot; 18 dates</span>
+            <span class="count">Jan 11 &ndash; Jun 05, 2027 &middot; 28 dates</span>
           </div>
           <span class="toggle-chip">
             <span class="txt-close">Hide dates</span>
@@ -631,9 +735,24 @@
             <span class="tag teal">Academic</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">12</span>JAN</div>
+            <h4>SED General Assembly</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">13</span>JAN</div>
+            <h4>Student Advising Program (SAP) Meeting</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">18</span>JAN</div>
             <h4>Feast Day of Sto. Ni&ntilde;o (Rest Day)</h4>
             <span class="tag gold">Holiday</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">05</span>FEB</div>
+            <h4>SED Friday Mass Sponsorship &amp; League/Intramurals Try-outs</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">16&ndash;19</span>FEB</div>
@@ -646,9 +765,24 @@
             <span class="tag gold">Holiday</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">25</span>FEB</div>
+            <h4>EDSA Anniversary (Special Working Holiday)</h4>
+            <span class="tag gold">Holiday</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">26</span>FEB</div>
+            <h4>SED Faculty Meeting</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">01&ndash;05</span>MAR</div>
             <h4>Vacation Week</h4>
             <span class="tag teal">Academic</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">08&ndash;13</span>MAR</div>
+            <h4>SEMSLC Sportsfest</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">15&ndash;20</span>MAR</div>
@@ -686,9 +820,24 @@
             <span class="tag gold">Holiday</span>
           </div>
           <div class="compact-item">
+            <div class="date"><span class="num">16</span>APR</div>
+            <h4>SED Faculty Meeting</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
             <div class="date"><span class="num">26&ndash;27</span>APR</div>
             <h4>Finals &mdash; Graduating</h4>
             <span class="tag green">Exam</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">26&ndash;30</span>APR</div>
+            <h4>PATHFIT Week</h4>
+            <span class="tag torch">SED Event</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">30</span>APR</div>
+            <h4>Dean&rsquo;s List Awarding, Caritas et Scientia &amp; Filmfest Awarding, SED Year-End Party</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">01</span>MAY</div>
@@ -704,6 +853,11 @@
             <div class="date"><span class="num">18</span>MAY</div>
             <h4>Last Day of Classes</h4>
             <span class="tag teal">Academic</span>
+          </div>
+          <div class="compact-item">
+            <div class="date"><span class="num">29</span>MAY</div>
+            <h4>Culmination for COP</h4>
+            <span class="tag torch">SED Event</span>
           </div>
           <div class="compact-item">
             <div class="date"><span class="num">04</span>JUN</div>
@@ -724,6 +878,7 @@
           <h3>Full calendar view</h3>
           <span class="count">August 2026 &ndash; June 2027</span>
         </div>
+        <p style="color:var(--ink-soft);font-size:0.9rem;margin:6px 0 20px;">Updated First and Second Semester, A.Y. 2026&ndash;2027</p>
         <div class="cal-grid-wrap" id="cal-grid-wrap"></div>
       </div>
 
@@ -738,76 +893,99 @@
     // A.Y. 2026–2027 tertiary academic calendar, keyed by ISO date. category: teal (academic) | green (examination) | gold (holiday)
     var events = {
       // First Semester
-      '2026-08-03': {label:'Classes Begin', category:'teal'},
-      '2026-08-06': {label:'Charter Day of Cebu Province', category:'gold'},
-      '2026-08-19': {label:'Feast Day of St. Ezekiel Moreno', category:'gold'},
-      '2026-08-21': {label:'Ninoy Aquino Day', category:'gold'},
-      '2026-08-28': {label:'Feast Day of St. Augustine', category:'gold'},
-      '2026-08-31': {label:"National Heroes' Day", category:'gold'},
-      '2026-09-09': {label:'Osmeña Day', category:'gold'},
-      '2026-09-15': {label:'Prelim Examinations begin', category:'green'},
-      '2026-09-16': {label:'Prelim Examinations', category:'green'},
-      '2026-09-17': {label:'Prelim Examinations', category:'green'},
-      '2026-09-18': {label:'Prelim Examinations end', category:'green'},
-      '2026-10-02': {label:"Institutional Teachers' Day", category:'teal'},
-      '2026-10-27': {label:'Midterm Examinations begin', category:'green'},
-      '2026-10-28': {label:'Midterm Examinations', category:'green'},
-      '2026-10-29': {label:'Midterm Examinations', category:'green'},
-      '2026-10-30': {label:'Midterm Examinations end', category:'green'},
-      '2026-10-31': {label:'Special Non-Working Day (Proc. No. 727)', category:'gold'},
-      '2026-11-01': {label:"All Saints' Day", category:'gold'},
-      '2026-11-02': {label:"All Souls' Day", category:'gold'},
-      '2026-11-26': {label:'Finals for Graduating Students', category:'green'},
-      '2026-11-27': {label:'Finals for Graduating Students', category:'green'},
-      '2026-11-30': {label:'Andres Bonifacio Day', category:'gold'},
-      '2026-12-08': {label:'Feast of the Immaculate Conception', category:'gold'},
-      '2026-12-14': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2026-12-15': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2026-12-16': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2026-12-17': {label:'Last Day of Classes', category:'teal'},
-      '2026-12-19': {label:'Recognition of Service Awardees & Institutional Christmas Party', category:'teal'},
-      '2027-01-22': {label:'Baccalaureate Mass', category:'teal'},
-      '2027-01-23': {label:'Commencement Exercises', category:'teal'},
+      '2026-08-03': [{label:'Classes Begin', category:'teal'}],
+      '2026-08-06': [{label:'Charter Day of Cebu Province', category:'gold'}],
+      '2026-08-19': [{label:'Feast Day of St. Ezekiel Moreno', category:'gold'}],
+      '2026-08-21': [{label:'Ninoy Aquino Day', category:'gold'}],
+      '2026-08-28': [{label:'Feast Day of St. Augustine', category:'gold'}, {label:'Leadership Training 1.0', category:'torch'}],
+      '2026-08-31': [{label:"National Heroes' Day", category:'gold'}],
+      '2026-09-09': [{label:'Osmeña Day', category:'gold'}],
+      '2026-09-15': [{label:'Prelim Examinations begin', category:'green'}],
+      '2026-09-16': [{label:'Prelim Examinations', category:'green'}],
+      '2026-09-17': [{label:'Prelim Examinations', category:'green'}],
+      '2026-09-18': [{label:'Prelim Examinations end', category:'green'}],
+      '2026-10-02': [{label:"Institutional Teachers' Day", category:'teal'}],
+      '2026-10-27': [{label:'Midterm Examinations begin', category:'green'}],
+      '2026-10-28': [{label:'Midterm Examinations', category:'green'}],
+      '2026-10-29': [{label:'Midterm Examinations', category:'green'}],
+      '2026-10-30': [{label:'Midterm Examinations end', category:'green'}],
+      '2026-10-31': [{label:'Special Non-Working Day (Proc. No. 727)', category:'gold'}],
+      '2026-11-01': [{label:"All Saints' Day", category:'gold'}],
+      '2026-11-02': [{label:"All Souls' Day", category:'gold'}],
+      '2026-11-26': [{label:'Finals for Graduating Students', category:'green'}],
+      '2026-11-27': [{label:'Finals for Graduating Students', category:'green'}, {label:'Education Summit 2.0', category:'torch'}],
+      '2026-11-30': [{label:'Andres Bonifacio Day', category:'gold'}],
+      '2026-12-08': [{label:'Feast of the Immaculate Conception', category:'gold'}],
+      '2026-12-14': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2026-12-15': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2026-12-16': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2026-12-17': [{label:'Last Day of Classes', category:'teal'}, {label:'SEMSLC Christmas Party', category:'torch'}],
+      '2026-12-19': [{label:'Recognition of Service Awardees & Institutional Christmas Party', category:'teal'}],
+      '2027-01-22': [{label:'Baccalaureate Mass', category:'teal'}],
+      '2027-01-23': [{label:'Commencement Exercises', category:'teal'}],
       // Second Semester
-      '2027-01-11': {label:'Classes Begin', category:'teal'},
-      '2027-01-18': {label:'Feast Day of Sto. Niño (Rest Day)', category:'gold'},
-      '2027-02-16': {label:'Prelim Examinations begin', category:'green'},
-      '2027-02-17': {label:'Prelim Examinations', category:'green'},
-      '2027-02-18': {label:'Prelim Examinations', category:'green'},
-      '2027-02-19': {label:'Prelim Examinations end', category:'green'},
-      '2027-02-24': {label:'Charter Day of Cebu City', category:'gold'},
-      '2027-03-01': {label:'Vacation Week', category:'teal'},
-      '2027-03-02': {label:'Vacation Week', category:'teal'},
-      '2027-03-03': {label:'Vacation Week', category:'teal'},
-      '2027-03-04': {label:'Vacation Week', category:'teal'},
-      '2027-03-05': {label:'Vacation Week', category:'teal'},
-      '2027-03-15': {label:'University Days & Intramurals', category:'teal'},
-      '2027-03-16': {label:'University Days & Intramurals', category:'teal'},
-      '2027-03-17': {label:'University Days & Intramurals', category:'teal'},
-      '2027-03-18': {label:'University Days & Intramurals', category:'teal'},
-      '2027-03-19': {label:'Feast Day of St. Joseph', category:'gold'},
-      '2027-03-20': {label:'University Days & Intramurals', category:'teal'},
-      '2027-03-25': {label:'Maundy Thursday', category:'gold'},
-      '2027-03-26': {label:'Good Friday', category:'gold'},
-      '2027-03-27': {label:'Holy Saturday', category:'gold'},
-      '2027-03-30': {label:'Midterm Examinations begin', category:'green'},
-      '2027-03-31': {label:'Midterm Examinations', category:'green'},
-      '2027-04-01': {label:'Midterm Examinations', category:'green'},
-      '2027-04-02': {label:'Midterm Examinations end', category:'green'},
-      '2027-04-09': {label:'Araw ng Kagitingan', category:'gold'},
-      '2027-04-26': {label:'Finals for Graduating Students', category:'green'},
-      '2027-04-27': {label:'Finals for Graduating Students', category:'green'},
-      '2027-05-01': {label:'Labor Day', category:'gold'},
-      '2027-05-13': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2027-05-14': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2027-05-17': {label:'Finals for Non-Graduating Students', category:'green'},
-      '2027-05-18': {label:'Last Day of Classes', category:'teal'},
-      '2027-06-04': {label:'Baccalaureate Mass', category:'teal'},
-      '2027-06-05': {label:'Commencement Exercises', category:'teal'}
+      '2027-01-11': [{label:'Classes Begin', category:'teal'}],
+      '2027-01-18': [{label:'Feast Day of Sto. Niño (Rest Day)', category:'gold'}],
+      '2027-02-16': [{label:'Prelim Examinations begin', category:'green'}],
+      '2027-02-17': [{label:'Prelim Examinations', category:'green'}],
+      '2027-02-18': [{label:'Prelim Examinations', category:'green'}],
+      '2027-02-19': [{label:'Prelim Examinations end', category:'green'}],
+      '2027-02-24': [{label:'Charter Day of Cebu City', category:'gold'}],
+      '2027-03-01': [{label:'Vacation Week', category:'teal'}],
+      '2027-03-02': [{label:'Vacation Week', category:'teal'}],
+      '2027-03-03': [{label:'Vacation Week', category:'teal'}],
+      '2027-03-04': [{label:'Vacation Week', category:'teal'}],
+      '2027-03-05': [{label:'Vacation Week', category:'teal'}],
+      '2027-03-15': [{label:'University Days & Intramurals', category:'teal'}],
+      '2027-03-16': [{label:'University Days & Intramurals', category:'teal'}],
+      '2027-03-17': [{label:'University Days & Intramurals', category:'teal'}],
+      '2027-03-18': [{label:'University Days & Intramurals', category:'teal'}],
+      '2027-03-19': [{label:'Feast Day of St. Joseph', category:'gold'}],
+      '2027-03-20': [{label:'University Days & Intramurals', category:'teal'}],
+      '2027-03-25': [{label:'Maundy Thursday', category:'gold'}],
+      '2027-03-26': [{label:'Good Friday', category:'gold'}],
+      '2027-03-27': [{label:'Holy Saturday', category:'gold'}],
+      '2027-03-30': [{label:'Midterm Examinations begin', category:'green'}],
+      '2027-03-31': [{label:'Midterm Examinations', category:'green'}],
+      '2027-04-01': [{label:'Midterm Examinations', category:'green'}],
+      '2027-04-02': [{label:'Midterm Examinations end', category:'green'}],
+      '2027-04-09': [{label:'Araw ng Kagitingan', category:'gold'}],
+      '2027-04-26': [{label:'Finals for Graduating Students', category:'green'}],
+      '2027-04-27': [{label:'Finals for Graduating Students', category:'green'}],
+      '2027-05-01': [{label:'Labor Day', category:'gold'}],
+      '2027-05-13': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2027-05-14': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2027-05-17': [{label:'Finals for Non-Graduating Students', category:'green'}],
+      '2027-05-18': [{label:'Last Day of Classes', category:'teal'}],
+      '2027-06-04': [{label:'Baccalaureate Mass', category:'teal'}],
+      '2027-06-05': [{label:'Commencement Exercises', category:'teal'}],
+      // SED Programs & Events
+      '2026-08-04': [{label:'SED General Assembly', category:'torch'}],
+      '2026-08-05': [{label:'Student Advising Program (SAP) Meeting', category:'torch'}],
+      '2026-08-07': [{label:'First Friday Mass (monthly, Aug&ndash;May)', category:'torch'}],
+      '2026-08-08': [{label:'I Read You, I Feed You Program (weekly Saturdays, Aug&ndash;May)', category:'torch'}],
+      '2026-08-14': [{label:'SED Faculty Meeting &amp; Buwan ng Wika', category:'torch'}],
+      '2026-09-25': [{label:'SED Faculty Meeting &amp; SED Acquaintance Party', category:'torch'}],
+      '2026-10-09': [{label:'Opening of Marian&rsquo;s Tribute', category:'torch'}],
+      '2026-10-16': [{label:'Closing of Marian&rsquo;s Tribute', category:'torch'}],
+      '2026-10-23': [{label:'SED Faculty Meeting', category:'torch'}],
+      '2026-11-20': [{label:'SED Faculty Meeting', category:'torch'}],
+      '2026-11-23': [{label:'Eucharistic Celebration &amp; Dean&rsquo;s List Awarding', category:'torch'}],
+      '2026-12-04': [{label:'SED Faculty Meeting &amp; Josenian Educators Christmas Party', category:'torch'}],
+      '2026-12-18': [{label:'SED Christmas Party', category:'torch'}],
+      '2026-12-21': [{label:'Kids Life Foundation Donation Drive Christmas Party', category:'torch'}],
+      '2027-01-08': [{label:'Leadership Training 2.0', category:'torch'}],
+      '2027-01-12': [{label:'SED General Assembly', category:'torch'}],
+      '2027-01-13': [{label:'Student Advising Program (SAP) Meeting', category:'torch'}],
+      '2027-02-05': [{label:'SED Friday Mass Sponsorship &amp; League/Intramurals Try-outs', category:'torch'}],
+      '2027-02-26': [{label:'SED Faculty Meeting', category:'torch'}],
+      '2027-04-16': [{label:'SED Faculty Meeting', category:'torch'}],
+      '2027-04-30': [{label:'Dean&rsquo;s List Awarding, Caritas et Scientia &amp; Filmfest Awarding, SED Year-End Party', category:'torch'}],
+      '2027-05-29': [{label:'Culmination for COP', category:'torch'}],
     };
 
     var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var CAT_LABEL = {teal:'Academic', green:'Examination', gold:'Holiday'};
+    var CAT_LABEL = {teal:'Academic', green:'Examination', gold:'Holiday', torch:'SED Event'};
 
     function pad(n){ return n < 10 ? '0' + n : '' + n; }
 
@@ -825,15 +1003,21 @@
       }
       for (var d = 1; d <= daysInMonth; d++){
         var key = year + '-' + pad(monthIndex0 + 1) + '-' + pad(d);
-        var ev = events[key];
-        if (ev){
+        var evs = events[key];
+        if (evs){
           var dateLabel = MONTHS_SHORT[monthIndex0] + ' ' + d + ', ' + year;
-          html += '<div class="day has-event ' + ev.category + '" tabindex="0">' + d +
-                  '<span class="dot ' + ev.category + '"></span>' +
+          var dots = evs.map(function(e){ return '<span class="dot ' + e.category + '"></span>'; }).join('');
+          var tipItems = evs.map(function(e){
+            return '<div class="tip-event">' +
+                     '<div class="tip-label">' + e.label + '</div>' +
+                     '<div class="tip-cat"><span class="dot ' + e.category + '"></span>' + CAT_LABEL[e.category] + '</div>' +
+                   '</div>';
+          }).join('');
+          html += '<div class="day has-event ' + evs[0].category + '" tabindex="0">' + d +
+                  '<span class="dots">' + dots + '</span>' +
                   '<div class="day-tip">' +
                     '<div class="tip-date">' + dateLabel + '</div>' +
-                    '<div class="tip-label">' + ev.label + '</div>' +
-                    '<div class="tip-cat"><span class="dot ' + ev.category + '"></span>' + CAT_LABEL[ev.category] + '</div>' +
+                    tipItems +
                   '</div>' +
                 '</div>';
         } else {
