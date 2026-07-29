@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Internationalization Hub | SED Connect Global</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="assets/styles.css" rel="stylesheet"/>
+<style>
+    /* ---------- NAV (mobile hamburger, matches other pages) ---------- */
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:50;}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:all 0.3s ease;}
+    .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(10px,10px);}
+    .nav-toggle.active span:nth-child(2){opacity:0;}
+    .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+    nav.links.mobile-open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:rgba(250,246,236,0.98);padding:20px 28px;gap:16px;box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+    @media (max-width:920px){
+      nav.links{display:none;}
+      nav.links.mobile-open{display:flex;}
+      .nav-toggle{display:block;}
+    }
+
+    /* ---------- BUTTONS (matches other pages) ---------- */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:0.92rem;border:1.5px solid transparent;cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;}
+    .btn-primary{background:var(--teal-deep);color:#fff;box-shadow:0 8px 20px -8px rgba(10,95,110,0.55);}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(10,95,110,0.6);}
+    .btn-ghost{border-color:rgba(21,42,45,0.25);color:var(--ink);}
+    .btn-ghost:hover{border-color:var(--teal-deep);color:var(--teal-deep);}
+
+    /* ---------- HERO ---------- */
+    .ihub-hero{padding:72px 0 48px;}
+    .ihub-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:32px;align-items:center;}
+    .ihub-card{background:var(--paper);border:1px solid rgba(21,42,45,0.08);border-radius:var(--radius);padding:24px 26px;box-shadow:0 16px 32px -24px rgba(21,42,45,0.35);}
+    .ihub-card p{color:var(--ink-soft);margin:6px 0 18px;font-size:0.92rem;}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px;}
+    .stat{background:var(--teal-pale);border-radius:12px;padding:12px;text-align:center;}
+    .stat strong{display:block;font-size:1.05rem;color:var(--teal-deep);}
+    .stat span{font-size:0.72rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;}
+    @media (max-width: 820px){.ihub-grid{grid-template-columns:1fr;}.stats{grid-template-columns:1fr;}}
+
+    /* ---------- SECTION HEADS ---------- */
+    .ihub-section{padding:24px 0 72px;}
+    .section-head{max-width:640px;margin-bottom:28px;}
+    .eyebrow{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:8px;}
+
+    /* ---------- PARTNER INSTITUTIONS ---------- */
+    .partner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+    .partner-card{background:#fff;border:1px solid rgba(21,42,45,0.08);border-radius:var(--radius);padding:22px;}
+    .partner-flag{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--teal-pale);display:inline-block;padding:5px 10px;border-radius:999px;margin-bottom:12px;}
+    .partner-card h3{font-size:1.05rem;margin-bottom:6px;}
+    .partner-card p{color:var(--ink-soft);font-size:0.9rem;margin:0;line-height:1.5;}
+    @media (max-width:920px){.partner-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:600px){.partner-grid{grid-template-columns:1fr;}}
+
+    /* ---------- EXCHANGE PROGRAMS ---------- */
+    .program-list{display:grid;gap:16px;}
+    .program-row{display:grid;grid-template-columns:0.9fr 1.6fr 0.7fr;gap:20px;align-items:start;background:#fff;border:1px solid rgba(21,42,45,0.08);border-radius:var(--radius);padding:22px;}
+    .program-row h3{font-size:1.02rem;margin:0 0 4px;}
+    .program-row .tag{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--teal-deep);}
+    .program-row p{color:var(--ink-soft);margin:0;font-size:0.92rem;line-height:1.5;}
+    .program-row .duration{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--ink-soft);text-align:right;}
+    @media (max-width:760px){.program-row{grid-template-columns:1fr;}.program-row .duration{text-align:left;}}
+
+    /* ---------- SCHOLARSHIPS ---------- */
+    .scholarship-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+    .scholarship-card{background:var(--teal-pale);border-radius:var(--radius);padding:22px;}
+    .scholarship-card h3{font-size:1.02rem;margin:0 0 6px;color:var(--teal-deep);}
+    .scholarship-card p{margin:0 0 10px;color:var(--ink-soft);font-size:0.9rem;line-height:1.5;}
+    .scholarship-card .deadline{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);}
+    @media (max-width:920px){.scholarship-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:600px){.scholarship-grid{grid-template-columns:1fr;}}
+
+    /* ---------- CTA ---------- */
+    .ihub-cta{background:var(--teal-deep);border-radius:var(--radius);padding:40px 36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
+    .ihub-cta h3{color:#fff;margin:0 0 6px;}
+    .ihub-cta p{color:rgba(255,255,255,0.8);margin:0;max-width:440px;}
+    .ihub-cta .btn-ghost{border-color:rgba(255,255,255,0.4);color:#fff;}
+    .ihub-cta .btn-ghost:hover{border-color:#fff;color:#fff;}
+  </style>
+</head>
+<body>
+<header class="site-nav">
+<div class="nav-inner">
+<a class="brand" href="index.html">
+<img alt="SED Connect Global logo" src="assets/pictures/logo.png"/>
+<div class="brand-text">
+<span class="main">SED Connect Global</span>
+<span class="sub">School of Education · USJ-R</span>
+</div>
+</a>
+<button aria-label="Toggle navigation" class="nav-toggle" onclick="document.querySelector('nav.links').classList.toggle('mobile-open');this.classList.toggle('active');">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<nav class="links">
+<a href="index.html">Home</a>
+      <a href="student-services.html">Student Services</a>
+      <a href="events-calendar.html">Events</a>
+      <a href="college-catalog.html">Catalog</a>
+      <a href="ched-memo-repository.html">CHED Memos</a>
+      <a href="internationalization-hub.html">Internationalization</a>
+      <a href="hyperlink.html">Links</a>
+      <a href="about-us.html">About Us</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero ihub-hero">
+<div class="wrap ihub-grid">
+<div>
+<span class="eyebrow">Global Engagement</span>
+<h1>Internationalization <em>Hub</em>.</h1>
+<p class="lede">Where SED's classrooms meet the world — connecting Cebu's future teachers with partner schools abroad, exchange programs, and scholarships that broaden how they teach and learn.</p>
+<div class="hero-cta">
+<a class="btn btn-primary" href="#scholarships">Explore scholarships</a>
+<a class="btn btn-ghost" href="mailto:sedconnectglobal@gmail.com">Talk to the international office</a>
+</div>
+</div>
+<div class="ihub-card">
+<h3>SED Connect Global</h3>
+<p>SED Connect Global is the College of Education's open hub for students, faculty, and partner schools — one place for advising, field study resources, announcements, and the programs that shape Cebu's next generation of teachers.</p>
+<div class="stats">
+<div class="stat"><strong>[12+]</strong><span>Partner schools</span></div>
+<div class="stat"><strong>[6]</strong><span>Countries</span></div>
+<div class="stat"><strong>[24]</strong><span>Active scholars</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ihub-section" id="partners">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Where our students go</span>
+<h2>Partner Institutions.</h2>
+<p>Universities and teacher-training schools that host SED students and faculty for exchange, practicum, and joint research.</p>
+</div>
+<div class="partner-grid">
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: Teacher education &amp; classroom practicum. [One line on what the partnership covers — student teaching, credit transfer, etc.]</p>
+</div>
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: STEM education &amp; curriculum design. [One line on what the partnership covers.]</p>
+</div>
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: Bilingual &amp; multicultural education. [One line on what the partnership covers.]</p>
+</div>
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: Special &amp; inclusive education. [One line on what the partnership covers.]</p>
+</div>
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: Educational technology &amp; research. [One line on what the partnership covers.]</p>
+</div>
+<div class="partner-card">
+<span class="partner-flag">[Country]</span>
+<h3>[Partner University Name]</h3>
+<p>Focus: Early childhood education. [One line on what the partnership covers.]</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ihub-section" id="programs">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Ways to go global</span>
+<h2>Exchange Programs.</h2>
+<p>From a full semester abroad to a short immersion, there's a track for wherever students are in the program.</p>
+</div>
+<div class="program-list">
+<div class="program-row">
+<div>
+<span class="tag">Semester Track</span>
+<h3>Student Teaching Exchange</h3>
+</div>
+<p>Full-term practicum placement at a partner school abroad, supervised jointly by SED and the host institution's faculty. Open to 4th-year education majors in good academic standing.</p>
+<span class="duration">[1 semester]</span>
+</div>
+<div class="program-row">
+<div>
+<span class="tag">Faculty Track</span>
+<h3>Faculty Exchange &amp; Research Collaboration</h3>
+</div>
+<p>Co-teaching, guest lecturing, and joint research placements for SED faculty at partner universities, with reciprocal visiting-faculty slots for our own campus.</p>
+<span class="duration">[4–8 weeks]</span>
+</div>
+<div class="program-row">
+<div>
+<span class="tag">Short Track</span>
+<h3>Summer Immersion &amp; Study Tour</h3>
+</div>
+<p>A short, guided trip pairing classroom observation with cultural immersion — built for students who want international exposure without a full-term commitment.</p>
+<span class="duration">[2–3 weeks]</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ihub-section" id="scholarships">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Funding the trip</span>
+<h2>Scholarships &amp; Grants.</h2>
+<p>Support available to make an exchange or study tour realistic on a student budget.</p>
+</div>
+<div class="scholarship-grid">
+<div class="scholarship-card">
+<h3>International Mobility Grant</h3>
+<p>Covers round-trip travel and a partial living stipend for one term abroad. Open to 3rd- and 4th-year education majors. [GPA/requirement here.]</p>
+<span class="deadline">Apply: [Month] each year</span>
+</div>
+<div class="scholarship-card">
+<h3>Partner University Tuition Waiver</h3>
+<p>Tuition is waived at the host institution for one exchange term, arranged directly between SED and the partner school. [Eligibility note here.]</p>
+<span class="deadline">Apply: [Month] each year</span>
+</div>
+<div class="scholarship-card">
+<h3>Faculty Development Scholarship</h3>
+<p>Funding for faculty attending international conferences, training, or short research residencies at a partner institution. [Eligibility note here.]</p>
+<span class="deadline">Apply: Rolling</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ihub-section" style="padding-top:0;">
+<div class="wrap">
+<div class="ihub-cta">
+<div>
+<h3>Thinking about going abroad?</h3>
+<p>The international office can walk you through eligibility, paperwork, and which partner school fits your track.</p>
+</div>
+<a class="btn btn-ghost" href="mailto:sedconnectglobal@gmail.com">Email the international office</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<a class="brand" href="index.html" style="margin-bottom:16px;">
+<img alt="SED Connect Global logo" src="assets/pictures/logo.png"/>
+<div class="brand-text">
+<span class="main">SED Connect Global</span>
+<span class="sub">College of Education</span>
+</div>
+</a>
+<p style="color:rgba(244,239,226,0.75);max-width:320px;">Connecting students, educators, and resources through a thoughtful online experience.</p>
+</div>
+<div>
+<h5>Explore</h5>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="student-services.html">Student Services</a></li>
+</ul>
+</div>
+<div>
+<h5>Support</h5>
+<ul>
+<li><a href="events-calendar.html">Events</a></li>
+<li><a href="college-catalog.html">Catalog</a></li>
+<li><a href="ched-memo-repository.html">CHED Memos</a></li>
+</ul>
+</div>
+<div>
+<h5>Contact</h5>
+<ul>
+<li><a href="mailto:sedconnectglobal@gmail.com">sedconnectglobal@gmail.com</a></li>
+<li><a href="#contact">Basak Campus, Cebu City</a></li>
+</ul>
+</div>
+</div>
+<div class="bottom">
+<span>© 2026 SED Connect Global</span>
+<span>Built for a welcoming educational experience</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
