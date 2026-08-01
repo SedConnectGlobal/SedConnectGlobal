@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSEd &ndash; Mathematics Curriculum — SED Connect Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/pictures/logo.png">
+<style>
+  :root{
+    --teal-deep:#0a5f6e;
+    --teal-bright:#12a3b6;
+    --teal-pale:#e3f3f4;
+    --gold:#bd8f2a;
+    --gold-light:#e7c669;
+    --cream:#faf6ec;
+    --paper:#fffdf8;
+    --ink:#152a2d;
+    --ink-soft:#496166;
+    --green:#2f7a4d;
+    --torch:#a8392c;
+    --radius:14px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--cream);
+    background-image:radial-gradient(circle at 1px 1px, rgba(10,95,110,0.07) 1px, transparent 0);
+    background-size:24px 24px;
+    color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif;color:var(--ink);margin:0;letter-spacing:-0.015em;}
+  h2 em, h3 em{font-style:italic;color:var(--teal-deep);font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;top:0;z-index:40;background:rgba(250,246,236,0.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(10,95,110,0.15);
+    border-top:3px solid var(--teal-deep);
+    border-image:linear-gradient(90deg, var(--teal-deep), var(--gold-light), var(--teal-deep)) 1;
+  }
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{width:44px;height:44px;object-fit:contain;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1;}
+  .brand-text .main{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;}
+  .brand-text .sub{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--ink-soft);text-transform:uppercase;}
+  nav.links{display:flex;gap:28px;}
+  nav.links a{font-size:0.9rem;font-weight:500;color:var(--ink-soft);position:relative;padding:4px 0;}
+  nav.links a:hover{color:var(--teal-deep);}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width 0.25s ease;}
+  nav.links a:hover::after{width:100%;}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:50;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:all 0.3s ease;}
+  .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(10px,10px);}
+  .nav-toggle.active span:nth-child(2){opacity:0;}
+  .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+  nav.links.mobile-open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:rgba(250,246,236,0.98);padding:20px 28px;gap:16px;box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;
+    font-size:0.72rem;color:var(--teal-deep);font-weight:500;display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:20px;height:2px;background:var(--gold);}
+  section{padding:84px 0;}
+  .section-head{max-width:720px;}
+  .section-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin-top:14px;font-weight:600;line-height:1.15;}
+  .section-head p{color:var(--ink-soft);margin-top:14px;}
+
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--teal-deep);margin-bottom:22px;}
+  .back-link:hover{text-decoration:underline;}
+
+  .degree-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);}
+  .degree-meta strong{color:var(--ink);}
+
+  .year-block{margin-top:52px;position:relative;}
+  .year-block:first-of-type{margin-top:44px;}
+  .year-head{
+    font-size:1.4rem;font-weight:600;margin-bottom:20px;padding-bottom:12px;
+    border-bottom:2px solid var(--gold-light);position:relative;
+    display:flex;align-items:baseline;gap:14px;
+  }
+  .year-head .year-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:2.6rem;
+    color:rgba(10,95,110,0.12);line-height:0.7;
+  }
+
+  .sem-block{margin-bottom:26px;}
+  .sem-block:last-child{margin-bottom:0;}
+  .sem-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
+  .sem-head h4{font-size:1.02rem;font-weight:600;color:var(--teal-deep);display:flex;align-items:center;gap:10px;}
+  .sem-head h4::before{content:"";display:inline-block;width:16px;height:2px;background:var(--gold);flex-shrink:0;}
+  .sem-head .units-count{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-soft);}
+
+  .curr-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid rgba(21,42,45,0.1);border-radius:12px;overflow:hidden;}
+  .curr-table thead th{
+    background:var(--teal-deep);color:#fff;text-align:left;padding:11px 16px;
+    font-family:'IBM Plex Mono',monospace;font-size:0.66rem;text-transform:uppercase;letter-spacing:0.07em;font-weight:500;
+  }
+  .curr-table thead th.units-col{text-align:right;}
+  .curr-table tbody td{padding:11px 16px;border-top:1px solid rgba(21,42,45,0.07);font-size:0.88rem;vertical-align:top;}
+  .curr-table tbody tr:nth-child(odd){background:rgba(227,243,244,0.28);}
+  .curr-table tbody tr:hover{background:rgba(227,243,244,0.55);}
+  .curr-table td.subno{font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);white-space:nowrap;font-size:0.76rem;padding-top:13px;}
+  .curr-table td.units{text-align:right;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .curr-table tfoot td{font-weight:600;background:var(--teal-pale);border-top:1px solid rgba(21,42,45,0.1);padding:11px 16px;font-size:0.85rem;}
+  .curr-table tfoot td.units{font-family:'IBM Plex Mono',monospace;}
+
+  .grand-total{
+    margin-top:44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    background:var(--ink);color:#fff;border-radius:var(--radius);padding:22px 28px;
+  }
+  .grand-total h3{color:#fff;font-size:1.15rem;}
+  .grand-total span{font-family:'IBM Plex Mono',monospace;font-size:1.3rem;color:var(--gold-light);}
+
+  .note-box{margin-top:28px;padding:18px 20px;border:1px dashed rgba(21,42,45,0.25);border-radius:12px;color:var(--ink-soft);font-size:0.85rem;}
+
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;}
+  footer{background:#0e2226;color:rgba(244,239,226,0.9);padding:56px 0 28px;}
+  footer h5{font-size:1rem;margin:0 0 14px;color:#fff;}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+  footer a{color:inherit;}
+  .bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.16);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:0.82rem;color:rgba(244,239,226,0.7);}
+
+  @media (max-width:900px){
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav.links{display:none;}
+    nav.links.mobile-open{display:flex;}
+    .nav-toggle{display:block;}
+  }
+  @media (max-width:700px){
+    section{padding:52px 0;}
+    .wrap{padding:0 18px;}
+    .curr-table{font-size:0.82rem;}
+    .curr-table thead th, .curr-table tbody td, .curr-table tfoot td{padding:9px 10px;}
+    .curr-table td.subno{font-size:0.7rem;}
+  }
+  @media (max-width:600px){
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/pictures/logo.png" alt="School logo">
+      <div class="brand-text">
+        <span class="main">SED Connect Global</span>
+        <span class="sub">School of Education · USJ-R</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('nav.links').classList.toggle('mobile-open');this.classList.toggle('active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="student-services.html">Student Services</a>
+      <a href="events-calendar.html">Events</a>
+      <a href="college-catalog.html">Catalog</a>
+      <a href="ched-memo-repository.html">CHED Memos</a>
+      <a href="internationalization-hub.html">Internationalization</a>
+      <a href="hyperlink.html">Links</a>
+      <a href="about-us.html">About Us</a>
+      <a href="concerns-faq.html">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section id="bsed-math" style="padding-top:44px;padding-bottom:24px;">
+    <div class="wrap">
+      <a class="back-link" href="college-catalog.html">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 6H2M5 3 2 6l3 3"/></svg>
+        Back to College Catalog
+      </a>
+
+      <div class="section-head">
+        <span class="eyebrow">Undergraduate curriculum checklist</span>
+        <h2>Bachelor of Secondary Education <em>&mdash; Mathematics</em></h2>
+        <p>The full year-by-year, semester-by-semester subject checklist for the BSEd&ndash;Math program, per CHED Memorandum Order No. 75, Series of 2017, effective A.Y. 2022&ndash;2023 at the USJ&ndash;R College of Education.</p>
+        <div class="degree-meta">
+          <span>Degree Program: <strong>BSEd&ndash;Math (2022)</strong></span>
+          <span>CHED CMO: <strong>No. 75, s. 2017</strong></span>
+          <span>Units confirmed so far: <strong>96.0</strong></span>
+        </div>
+      </div>
+
+      <!-- 1ST YEAR -->
+      <div class="year-block">
+        <h3 class="year-head"><span class="year-num">01</span>1st Year</h3>
+
+        <div class="sem-block">
+          <div class="sem-head"><h4>1st Semester</h4><span class="units-count">20.0 units</span></div>
+          <table class="curr-table">
+            <thead><tr><th>Subject No.</th><th>Subject Title</th><th class="units-col">Units</th></tr></thead>
+            <tbody>
+              <tr><td class="subno">PROF ED 01</td><td>Building and Enhancing New Literacies Across the Curriculum</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PROF ED B</td><td>Enhanced Fundamentals in Mathematics (including Statistics)</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 01</td><td>History of Mathematics</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">EP 1</td><td>English Proficiency Level 1 (Lec/Lab)</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ReEd 1</td><td>Initium Fidei: An Introduction to Doing Catholic Theology</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PATHFit 1</td><td>Movement Competency Training</td><td class="units">2.0</td></tr>
+              <tr><td class="subno">NSTP 1*</td><td>Civic Welfare Training Service (CWTS) 11 / Reserve Officers' Training Corps (ROTC) 11</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">GUIDANCE 1</td><td>Adjustment to Josenian College Life</td><td class="units">1.0</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Semester total</td><td class="units">20.0</td></tr></tfoot>
+          </table>
+        </div>
+
+        <div class="sem-block">
+          <div class="sem-head"><h4>2nd Semester</h4><span class="units-count">26.0 units</span></div>
+          <table class="curr-table">
+            <thead><tr><th>Subject No.</th><th>Subject Title</th><th class="units-col">Units</th></tr></thead>
+            <tbody>
+              <tr><td class="subno">PROF ED 02</td><td>Foundation of Special and Inclusive Education</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PROF ED 03</td><td>The Child and Adolescent Learner and Learning Principles</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 02</td><td>College and Advanced Algebra</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 03</td><td>Trigonometry</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 04</td><td>Plane and Solid Geometry</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">GE MMW</td><td>Mathematics in the Modern World</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ReEd 2</td><td>Written That You May Believe: An Introduction to Biblical Exegesis</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PATHFit 2</td><td>Exercise-Based Fitness Activities</td><td class="units">2.0</td></tr>
+              <tr><td class="subno">NSTP 2*</td><td>Civic Welfare Training Service (CWTS) 12 / Reserve Officers' Training Corps (ROTC) 12</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">GUIDANCE 2</td><td>Living the Augustinian Recollect College Experience</td><td class="units">1.0</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Semester total</td><td class="units">26.0</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2ND YEAR -->
+      <div class="year-block">
+        <h3 class="year-head"><span class="year-num">02</span>2nd Year</h3>
+
+        <div class="sem-block">
+          <div class="sem-head"><h4>1st Semester</h4><span class="units-count">24.0 units</span></div>
+          <table class="curr-table">
+            <thead><tr><th>Subject No.</th><th>Subject Title</th><th class="units-col">Units</th></tr></thead>
+            <tbody>
+              <tr><td class="subno">PROF ED 04</td><td>Facilitating Learner-Centered Teaching</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PROF ED 05</td><td>Technology for Teaching and Learning</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 05</td><td>Logic and Set Theory</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 06</td><td>Modern Geometry</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 07</td><td>Calculus I with Analytic Geometry</td><td class="units">4.0</td></tr>
+              <tr><td class="subno">GE RPH</td><td>Readings in Philippine History</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ReEd 3</td><td>Our Restless Hearts: An Introduction to Doing Catholic Morality</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PATHFit 3</td><td>Menu of Dance, Sports, Martial Arts, Group Exercise, Outdoor and Adventure Activities 1</td><td class="units">2.0</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Semester total</td><td class="units">24.0</td></tr></tfoot>
+          </table>
+        </div>
+
+        <div class="sem-block">
+          <div class="sem-head"><h4>2nd Semester</h4><span class="units-count">26.0 units</span></div>
+          <table class="curr-table">
+            <thead><tr><th>Subject No.</th><th>Subject Title</th><th class="units-col">Units</th></tr></thead>
+            <tbody>
+              <tr><td class="subno">PROF ED 06</td><td>The Teaching Profession</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PROF ED 07B</td><td>Digital and ICT Literacy</td><td class="units">2.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 08</td><td>Calculus II</td><td class="units">4.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 09</td><td>Mathematics of Investment</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ED-MATH MAJ 10</td><td>Elementary Statistics and Probability</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">Rizal</td><td>Life and Works of Dr. Jose Rizal</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">GE TCW</td><td>The Contemporary World</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">ReEd 4</td><td>A Call to Action: An Introduction to Catholic Social Thought</td><td class="units">3.0</td></tr>
+              <tr><td class="subno">PATHFit 4</td><td>Physical Education 4</td><td class="units">2.0</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Semester total</td><td class="units">26.0</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="grand-total">
+        <h3>Total units confirmed above (1st &ndash; 2nd Year)</h3>
+        <span>96.0 units</span>
+      </div>
+
+      <p class="note-box">
+        * NSTP 1 and 2 correspond to CWTS 11/12 or ROTC 11/12 per the student's chosen NSTP component.<br>
+        This checklist reflects the 1st and 2nd Year portion of the 2022 curriculum for BSEd&ndash;Math as provided from the official checklist scan. The 3rd and 4th Year subjects (including Practice Teaching / Teaching Internship and Field Study courses) were not part of the source document reviewed and are not yet listed here &mdash; they will be added once that page of the checklist is available. Subject offerings, prerequisites, and unit loads are subject to periodic CHED and university revisions &mdash; always confirm your official checklist with the School of Education or the Registrar's Office before enrollment.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:16px;">
+          <img src="assets/pictures/logo.png" alt="SED Connect Global logo">
+          <div class="brand-text">
+            <span class="main">SED Connect Global</span>
+            <span class="sub">College of Education · USJ-R</span>
+          </div>
+        </a>
+        <p style="max-width:36ch;font-size:0.88rem;color:rgba(244,239,226,0.6);margin-top:14px;">
+          The open resource hub of the University of San Jose–Recoletos College of Education, serving educators since 1947.
+        </p>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#resources">College catalog</a></li>
+          <li><a href="#resources">Student advising</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>College</h5>
+        <ul>
+          <li><a href="#about">About SED</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#announcements">Announcements</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Get in touch</h5>
+        <ul>
+          <li><a href="mailto:sedconnectglobal@gmail.com">sedconnectglobal@gmail.com</a></li>
+          <li><a href="#contact">Basak Campus, Cebu City</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; 2026 College of Education, University of San Jose–Recoletos.</span>
+      <span>SED Connect Global · Est. 1947</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
